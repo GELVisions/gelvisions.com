@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEL Visions | Changing the world BRICK by BRICK</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --gel-blue: #1A73E8;
+            --gel-red: #EA4335;
+            --gel-green: #34A853;
+            --gel-yellow: #FBBC05;
+            --gel-purple: #8A2BE2;
+            --gel-dark: #333333;
+            --gel-light: #f8f9fa;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--gel-dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, var(--gel-blue), var(--gel-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--gel-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gel-red);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn-red {
+            background: linear-gradient(135deg, var(--gel-red), #FF6B6B);
+        }
+
+        .btn-red:hover {
+            box-shadow: 0 6px 20px rgba(234, 67, 53, 0.4);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--gel-green), #4ECDC4);
+        }
+
+        .btn-green:hover {
+            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-world {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .logo-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 10px 10px;
+            border-radius: 50%;
+        }
+
+        .logo-tree {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .logo-trunk {
+            width: 6px;
+            height: 25px;
+            background: #8B4513;
+            margin: 0 auto;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+        }
+
+        .logo-foliage {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--gel-green);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .logo-house {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            transform: scale(0.7);
+        }
+
+        .logo-house-body {
+            width: 12px;
+            height: 10px;
+            background: var(--gel-yellow);
+            position: relative;
+        }
+
+        .logo-house-roof {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 5px solid #FFA500;
+            position: absolute;
+            top: -5px;
+        }
+
+        .logo-books {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 2px;
+            transform: scale(0.7);
+        }
+
+        .logo-book {
+            width: 4px;
+            background: var(--gel-purple);
+            border-radius: 1px;
+        }
+
+        .logo-book-1 { height: 8px; }
+        .logo-book-2 { height: 10px; }
+        .logo-book-3 { height: 6px; }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-company {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .logo-tagline {
+            font-size: 12px;
+            color: #475569;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
+
+        /* Homepage Background Styles */
+        .homepage-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        /* Founders Section */
+        .founders-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .founder-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .founder-image {
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .founder-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            color: var(--gel-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .founder-role {
+            color: var(--gel-red);
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--gel-red), #FF6B6B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Pickup Schedule Table */
+        .pickup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pickup-table th, .pickup-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pickup-table th {
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            color: white;
+            font-weight: 600;
+        }
+
+        .pickup-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Auth Modal Styles */
+        .auth-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .auth-tab.active {
+            color: var(--gel-blue);
+            border-bottom: 3px solid var(--gel-blue);
+            font-weight: 600;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--gel-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+
+        .auth-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+        }
+
+        .auth-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .auth-switch a {
+            color: var(--gel-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .admin-access {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .admin-btn {
+            background: transparent;
+            border: 2px solid var(--gel-red);
+            color: var(--gel-red);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            background-color: var(--gel-red);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .auto-signin {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .auto-signin input {
+            margin-right: 8px;
+        }
+
+        .demo-access {
+            text-align: center;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 6px;
+        }
+
+        .demo-btn {
+            background: transparent;
+            border: 2px solid var(--gel-green);
+            color: var(--gel-green);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .demo-btn:hover {
+            background-color: var(--gel-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .admin-panel.open {
+            right: 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .admin-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gel-red);
+            transition: color 0.3s ease;
+        }
+
+        .admin-close:hover {
+            color: #d33426;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .user-table th, .user-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-table th {
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-count {
+            background-color: var(--gel-green);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gel-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--gel-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gel-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: white;
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Collection Info Banner */
+        .collection-info {
+            background: linear-gradient(135deg, var(--gel-green), #4ECDC4);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .collection-info p {
+            margin: 0;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Waste Counter */
+        .waste-counter {
+            background-color: rgba(51, 51, 51, 0.85);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            margin: 0 20px 20px;
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gel-green);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .counter-text {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: rgba(248, 249, 250, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 3px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Problem Section */
+        .problem {
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .problem-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .problem-image {
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+        }
+
+        .problem-content {
+            padding: 25px;
+            background-color: white;
+        }
+
+        .problem-content h3 {
+            color: var(--gel-red);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Process Section */
+        .process {
+            text-align: center;
+            background-color: rgba(248, 249, 250, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            margin: 0 15px 30px;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--gel-blue);
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--gel-blue);
+            font-size: 1.3rem;
+        }
+
+        /* Donate Section */
+        .donate {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .donate-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .donate-option {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .donate-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .donate-option h3 {
+            margin-bottom: 20px;
+            color: var(--gel-blue);
+            font-size: 1.4rem;
+        }
+
+        .donate-option .btn {
+            margin-top: 20px;
+        }
+
+        /* Donation Form Page */
+        .donation-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background-color: var(--gel-light);
+        }
+
+        .donation-form {
+            background-color: var(--gel-light);
+            padding: 60px 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gel-blue), var(--gel-purple));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .waste-types {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .waste-type {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .waste-type:hover {
+            border-color: var(--gel-blue);
+            transform: translateY(-2px);
+        }
+
+        .waste-type.selected {
+            border-color: var(--gel-green);
+            background-color: rgba(52, 168, 83, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .waste-type input {
+            display: none;
+        }
+
+        .waste-type label {
+            cursor: pointer;
+            display: block;
+        }
+
+        .waste-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Collection Process Info */
+        .collection-process {
+            background-color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-info {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gel-green);
+        }
+
+        .process-info h3 {
+            color: var(--gel-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Impact Section */
+        .impact {
+            background-color: rgba(248, 249, 250, 0.9);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            margin: 0 20px 30px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gel-blue);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--gel-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--gel-dark), #2d3748);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .step {
+                min-width: 45%;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .step {
+                min-width: 100%;
+            }
+
+            .counter-number {
+                font-size: 2rem;
+            }
+
+            .waste-types {
+                flex-direction: column;
+            }
+
+            .auth-container {
+                padding: 20px;
+            }
+            
+            .logo-container .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-symbol {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Homepage Background -->
+    <div class="homepage-background">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <!-- Auth Modal - Always shown on page load -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-container">
+            <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-symbol">
+                    <div class="logo-world">
+                        <div class="logo-grid"></div>
+                        <div class="logo-tree">
+                            <div class="logo-foliage"></div>
+                            <div class="logo-trunk"></div>
+                        </div>
+                        <div class="logo-books">
+                            <div class="logo-book logo-book-1"></div>
+                            <div class="logo-book logo-book-2"></div>
+                            <div class="logo-book logo-book-3"></div>
+                        </div>
+                        <div class="logo-house">
+                            <div class="logo-house-roof"></div>
+                            <div class="logo-house-body"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-company">GEL VISIONS</div>
+                    <div class="logo-tagline">CHANGING THE WORLD BRICK BY BRICK</div>
+                </div>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="signin">Sign In</div>
+                <div class="auth-tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <form class="auth-form active" id="signin-form">
+                <div class="form-group">
+                    <label for="signin-email">Email</label>
+                    <input type="email" id="signin-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">Password</label>
+                    <input type="password" id="signin-password" required>
+                </div>
+                <div class="auto-signin">
+                    <input type="checkbox" id="auto-signin">
+                    <label for="auto-signin">Keep me signed in</label>
+                </div>
+                <button type="submit" class="auth-submit">Sign In</button>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a>
+                </div>
+            </form>
+            
+            <form class="auth-form" id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-phone">Mobile Number</label>
+                    <input type="tel" id="signup-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="auto-signin">
+                    <input type="checkbox" id="auto-signup">
+                    <label for="auto-signup">Keep me signed in</label>
+                </div>
+                <button type="submit" class="auth-submit">Create Account</button>
+                <div class="auth-switch">
+                    Already have an account? <a href="#" id="switch-to-signin">Sign In</a>
+                </div>
+            </form>
+            
+            <div class="demo-access">
+                <p>Want to explore without signing up?</p>
+                <button class="demo-btn" id="demo-access">Continue as Guest</button>
+            </div>
+            
+            <div class="admin-access">
+                <button class="admin-btn" id="admin-login">Editor Access</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <h3>Admin Dashboard</h3>
+            <button class="admin-close" id="admin-close">×</button>
+        </div>
+        
+        <div class="admin-section">
+            <h4>User Database <span class="user-count" id="user-count">0</span></h4>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+                    <!-- Users will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="admin-section">
+            <h4>Scheduled Pickups <span class="user-count" id="pickup-count">0</span></h4>
+            <table class="pickup-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Waste Type</th>
+                        <th>Quantity</th>
+                        <th>Scheduled</th>
+                    </tr>
+                </thead>
+                <tbody id="pickup-table-body">
+                    <!-- Pickups will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div id="main-content" style="display: none;">
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo-container">
+                    <div class="logo-symbol">
+                        <div class="logo-world">
+                            <div class="logo-grid"></div>
+                            <div class="logo-tree">
+                                <div class="logo-foliage"></div>
+                                <div class="logo-trunk"></div>
+                            </div>
+                            <div class="logo-books">
+                                <div class="logo-book logo-book-1"></div>
+                                <div class="logo-book logo-book-2"></div>
+                                <div class="logo-book logo-book-3"></div>
+                            </div>
+                            <div class="logo-house">
+                                <div class="logo-house-roof"></div>
+                                <div class="logo-house-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-company">GEL VISIONS</div>
+                        <div class="logo-tagline">CHANGING THE WORLD BRICK BY BRICK</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#" id="nav-home">Home</a></li>
+                        <li><a href="#problem">The Problem</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#" id="nav-schedule" class="btn btn-green">Schedule Waste Pickup</a></li>
+                        <li><button class="admin-btn" id="admin-toggle" style="display: none;">Editor Panel</button></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu" id="mobile-menu">☰</div>
+            </div>
+        </header>
+
+        <!-- Home Page Content -->
+        <div id="home-page">
+            <!-- Hero Section -->
+            <section class="hero" id="home">
+                <div class="container">
+                    <h1>Changing the world BRICK by BRICK</h1>
+                    <p>Join GEL Visions in transforming plastic and agricultural stubble into high-quality, affordable bricks for communities in need.</p>
+                    <a href="#" id="schedule-from-home" class="btn btn-green">Schedule Waste Pickup</a>
+                    <a href="#problem" class="btn">Learn More</a>
+                </div>
+            </section>
+
+            <!-- Collection Info Banner -->
+            <section class="collection-info">
+                <div class="container">
+                    <p>🚚 <strong>Collection Schedule:</strong> We collect waste twice weekly. After booking, our driver will call you to schedule pickup during the next collection drive.</p>
+                </div>
+            </section>
+
+            <!-- Waste Counter -->
+            <section class="waste-counter">
+                <div class="container">
+                    <h2>Our Collective Impact</h2>
+                    <p>Together, we're making a difference by diverting waste from landfills and burning</p>
+                    <div class="counter-container">
+                        <div class="counter-item">
+                            <div class="counter-number" id="plastic-counter">15,247</div>
+                            <div class="counter-text">Kilos of Plastic Donated</div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="stubble-counter">8,932</div>
+                            <div class="counter-text">Kilos of Stubble Donated</div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="bricks-counter">12,385</div>
+                            <div class="counter-text">Bricks Produced</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about">
+                <div class="container">
+                    <h2>About GEL Visions</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>GEL Visions addresses two critical global challenges simultaneously: plastic pollution and agricultural stubble burning.</p>
+                            <p>By collecting discarded plastic and agricultural stubble, we're able to manufacture durable, eco-friendly bricks that are used to build safe, affordable housing for those in need.</p>
+                            <p>Our innovative approach not only provides sustainable building materials but also creates local employment opportunities and reduces environmental pollution.</p>
+                            <a href="#process" class="btn">How It Works</a>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Eco bricks being used in construction">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem Section -->
+            <section class="problem" id="problem">
+                <div class="container">
+                    <h2>The Problem We're Solving</h2>
+                    <p>Plastic pollution and stubble burning are creating environmental and health crises worldwide.</p>
+                    <div class="problem-grid">
+                        <div class="problem-card">
+                            <div class="problem-image">
+                                🥤
+                            </div>
+                            <div class="problem-content">
+                                <h3>Plastic Pollution</h3>
+                                <p>Millions of tons of plastic waste end up in landfills and oceans each year, harming wildlife and ecosystems. Only 9% of all plastic ever produced has been recycled.</p>
+                            </div>
+                        </div>
+                        <div class="problem-card">
+                            <div class="problem-image">
+                                🌾
+                            </div>
+                            <div class="problem-content">
+                                <h3>Stubble Burning</h3>
+                                <p>Farmers burn agricultural residue after harvest, releasing toxic pollutants that cause severe air pollution and respiratory problems for millions of people.</p>
+                            </div>
+                        </div>
+                        <div class="problem-card">
+                            <div class="problem-image">
+                                🏠
+                            </div>
+                            <div class="problem-content">
+                                <h3>Housing Shortage</h3>
+                                <p>Over 1 billion people live in inadequate housing, with limited access to affordable building materials. Traditional brick production consumes valuable topsoil.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Section -->
+            <section class="process" id="process">
+                <div class="container">
+                    <h2>Our Process</h2>
+                    <p>From waste collection to brick production, our process is designed to be efficient, sustainable, and community-focused.</p>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-icon">🗓️</div>
+                            <h3>Schedule Pickup</h3>
+                            <p>Book a waste collection through our form. Our driver will call you to confirm the next available pickup date.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">🚚</div>
+                            <h3>Collection</h3>
+                            <p>We collect plastic and stubble waste twice weekly from homes and businesses across the city.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">🏭</div>
+                            <h3>Processing</h3>
+                            <p>Collected materials are cleaned, sorted, and processed into composite material for brick production.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">🧱</div>
+                            <h3>Brick Manufacturing</h3>
+                            <p>Using specialized equipment, we mold the composite material into high-quality, durable bricks.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Donate Section -->
+            <section class="donate" id="donate">
+                <div class="container">
+                    <h2>Donate Your Waste</h2>
+                    <p>Your plastic and stubble waste can become building materials for affordable housing.</p>
+                    <div class="donate-options">
+                        <div class="donate-option">
+                            <h3>Plastic Waste</h3>
+                            <p>Donate plastic bottles, containers, packaging, and other plastic waste.</p>
+                            <a href="#" class="btn schedule-waste-btn">Schedule Plastic Pickup</a>
+                        </div>
+                        <div class="donate-option">
+                            <h3>Agricultural Stubble</h3>
+                            <p>Donate crop residue like rice straw, wheat straw, and other agricultural waste.</p>
+                            <a href="#" class="btn btn-green schedule-waste-btn">Schedule Stubble Pickup</a>
+                        </div>
+                        <div class="donate-option">
+                            <h3>Both Materials</h3>
+                            <p>Donate both plastic and stubble to help us create more eco-bricks.</p>
+                            <a href="#" class="btn schedule-waste-btn">Schedule Both Pickup</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collection Process Info -->
+            <section class="collection-process">
+                <div class="container">
+                    <div class="process-info">
+                        <h3>How Collection Works</h3>
+                        <p><strong>After you submit the donation form:</strong></p>
+                        <p>1. Our team will review your submission within 24 hours</p>
+                        <p>2. A driver will call you to confirm details and schedule pickup</p>
+                        <p>3. We collect waste <strong>twice per week</strong> - typically Wednesdays and Saturdays</p>
+                        <p>4. You'll receive a confirmation call the day before collection</p>
+                        <p>5. Our truck will pick up your waste at the scheduled time</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Section -->
+            <section class="impact" id="impact">
+                <div class="container">
+                    <h2>Our Impact</h2>
+                    <p>Since our launch, we've made significant progress in addressing both environmental and social challenges.</p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-number">15,000+</div>
+                            <div class="stat-text">Kilos of Plastic Recycled</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8,500+</div>
+                            <div class="stat-text">Kilos of Stubble Recycled</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">32</div>
+                            <div class="stat-text">Communities Served</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2,300+</div>
+                            <div class="stat-text">Jobs Created</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Founders Section - Moved to bottom -->
+            <section class="founders-section">
+                <div class="container">
+                    <h2>Meet Our Founders</h2>
+                    <p>The visionary leaders behind GEL Visions who are driving innovation in sustainable construction</p>
+                    <div class="founders-grid">
+                        <div class="founder-card">
+                            <div class="founder-image">
+                                <!-- Removed initials as requested -->
+                            </div>
+                            <div class="founder-content">
+                                <h3 class="founder-name">Gautham Krishna R Shenoy</h3>
+                                <div class="founder-role">Co-Founder & CEO</div>
+                            </div>
+                        </div>
+                        <div class="founder-card">
+                            <div class="founder-image">
+                                <!-- Removed initials as requested -->
+                            </div>
+                            <div class="founder-content">
+                                <h3 class="founder-name">Lakshan Balachandar</h3>
+                                <div class="founder-role">Co-Founder & COO</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Waste Scheduling Page -->
+        <div id="schedule-page" style="display: none;">
+            <section class="donation-page">
+                <div class="container">
+                    <div class="form-container">
+                        <h2>Schedule Your Waste Donation</h2>
+                        <p>Fill out the form below to arrange a pickup of your plastic/stubble waste. <strong>Our driver will call you to schedule the next available collection.</strong></p>
+                        
+                        <form id="waste-donation-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Full Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Street, City, ZIP Code" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Type of Waste</label>
+                                <div class="waste-types">
+                                    <div class="waste-type" onclick="selectWasteType('plastic')">
+                                        <input type="radio" id="plastic" name="waste-type" value="plastic">
+                                        <label for="plastic">
+                                            <div class="waste-icon">🥤</div>
+                                            Plastic Waste
+                                        </label>
+                                    </div>
+                                    <div class="waste-type" onclick="selectWasteType('stubble')">
+                                        <input type="radio" id="stubble" name="waste-type" value="stubble">
+                                        <label for="stubble">
+                                            <div class="waste-icon">🌾</div>
+                                            Stubble Waste
+                                        </label>
+                                    </div>
+                                    <div class="waste-type" onclick="selectWasteType('both')">
+                                        <input type="radio" id="both" name="waste-type" value="both">
+                                        <label for="both">
+                                            <div class="waste-icon">🔄</div>
+                                            Both
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="quantity">Estimated Quantity (kg)</label>
+                                <input type="number" id="quantity" name="quantity" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="notes">Additional Information</label>
+                                <textarea id="notes" name="notes" placeholder="Any special instructions, types of plastic, or details about your waste donation"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-green" style="width: 100%;">Schedule Waste Pickup</button>
+                            
+                            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                                <strong>Note:</strong> After submission, our driver will call you within 24 hours to confirm pickup details for the next collection drive.
+                            </p>
+                        </form>
+
+                        <div class="page-nav">
+                            <a href="#" id="back-to-home" class="btn">← Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <div class="logo-container">
+                            <div class="logo-symbol">
+                                <div class="logo-world">
+                                    <div class="logo-grid"></div>
+                                    <div class="logo-tree">
+                                        <div class="logo-foliage"></div>
+                                        <div class="logo-trunk"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>GEL Visions</h3>
+                        </div>
+                        <p>Changing the world BRICK by BRICK. Transforming waste into sustainable housing solutions for communities worldwide.</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#" id="footer-home">Home</a></li>
+                            <li><a href="#problem">The Problem</a></li>
+                            <li><a href="#process">Our Process</a></li>
+                            <li><a href="#impact">Impact</a></li>
+                            <li><a href="#" id="footer-schedule">Schedule Pickup</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li>Email: info@gelvisions.org</li>
+                            <li>Phone: +1 (555) 123-GELV</li>
+                            <li>Address: 123 Sustainability Drive, Eco City</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 GEL Visions. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // User data storage
+        let users = JSON.parse(localStorage.getItem('gelvisions_users')) || [];
+        let currentUser = null;
+        let isEditor = false;
+        let scheduledPickups = JSON.parse(localStorage.getItem('gelvisions_pickups')) || [];
+
+        // DOM Elements
+        const authModal = document.getElementById('auth-modal');
+        const mainContent = document.getElementById('main-content');
+        const homePage = document.getElementById('home-page');
+        const schedulePage = document.getElementById('schedule-page');
+        const adminPanel = document.getElementById('admin-panel');
+        const userTableBody = document.getElementById('user-table-body');
+        const userCount = document.getElementById('user-count');
+        const pickupTableBody = document.getElementById('pickup-table-body');
+        const pickupCount = document.getElementById('pickup-count');
+
+        // Always show auth modal on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear any saved login state to force authentication
+            localStorage.removeItem('gelvisions_autoSignIn');
+            localStorage.removeItem('gelvisions_currentUser');
+            
+            // Show auth modal
+            authModal.style.display = 'flex';
+            mainContent.style.display = 'none';
+            
+            // Initialize counters
+            initializeCounters();
+        });
+
+        // Auth Tab Switching
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding form
+                const tabName = this.getAttribute('data-tab');
+                document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+                document.getElementById(`${tabName}-form`).classList.add('active');
+            });
+        });
+
+        // Switch between sign in and sign up
+        document.getElementById('switch-to-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('[data-tab="signup"]').classList.add('active');
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+            document.getElementById('signup-form').classList.add('active');
+        });
+
+        document.getElementById('switch-to-signin').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('[data-tab="signin"]').classList.add('active');
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+            document.getElementById('signin-form').classList.add('active');
+        });
+
+        // Sign Up Form Submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+            const autoSignIn = document.getElementById('auto-signup').checked;
+            
+            // Check if user already exists
+            if (users.find(user => user.email === email)) {
+                alert('An account with this email already exists. Please sign in instead.');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                phone,
+                password, // In a real app, this would be hashed
+                joined: new Date().toLocaleDateString()
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('gelvisions_users', JSON.stringify(users));
+            
+            currentUser = newUser;
+            
+            alert(`Welcome to GEL Visions, ${name}! Your account has been created.`);
+            showMainContent();
+        });
+
+        // Sign In Form Submission
+        document.getElementById('signin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                
+                alert(`Welcome back, ${user.name}!`);
+                showMainContent();
+                
+                // Check if user is editor
+                if (user.email === 'editor@gelvisions.org') {
+                    isEditor = true;
+                    document.getElementById('admin-toggle').style.display = 'block';
+                }
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+
+        // Demo Access
+        document.getElementById('demo-access').addEventListener('click', function() {
+            currentUser = {
+                id: 'demo',
+                name: 'Demo User',
+                email: 'demo@gelvisions.org',
+                phone: 'Not provided',
+                joined: new Date().toLocaleDateString()
+            };
+            
+            alert('Welcome to GEL Visions! You are now browsing as a guest.');
+            showMainContent();
+        });
+
+        // Admin Login
+        document.getElementById('admin-login').addEventListener('click', function() {
+            const password = prompt('Enter editor password:');
+            // In a real app, this would be a secure server-side check
+            if (password === 'editor123') {
+                isEditor = true;
+                
+                // Create editor user if doesn't exist
+                const editorUser = {
+                    id: 'editor',
+                    name: 'GEL Visions Editor',
+                    email: 'editor@gelvisions.org',
+                    phone: 'Admin',
+                    password: 'editor123',
+                    joined: new Date().toLocaleDateString()
+                };
+                
+                if (!users.find(user => user.email === 'editor@gelvisions.org')) {
+                    users.push(editorUser);
+                    localStorage.setItem('gelvisions_users', JSON.stringify(users));
+                }
+                
+                currentUser = editorUser;
+                alert('Editor access granted!');
+                showMainContent();
+                document.getElementById('admin-toggle').style.display = 'block';
+                // Show admin panel immediately
+                adminPanel.classList.add('open');
+                updateUserTable();
+                updatePickupTable();
+            } else {
+                alert('Invalid editor password.');
+            }
+        });
+
+        // Show main content after authentication
+        function showMainContent() {
+            authModal.style.display = 'none';
+            mainContent.style.display = 'block';
+            showHomePage();
+        }
+
+        // Page Navigation Functions
+        function showHomePage() {
+            homePage.style.display = 'block';
+            schedulePage.style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function showSchedulePage() {
+            homePage.style.display = 'none';
+            schedulePage.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        // Navigation event listeners
+        document.getElementById('nav-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            showHomePage();
+        });
+
+        document.getElementById('footer-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            showHomePage();
+        });
+
+        document.getElementById('nav-schedule').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSchedulePage();
+        });
+
+        document.getElementById('footer-schedule').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSchedulePage();
+        });
+
+        document.getElementById('schedule-from-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSchedulePage();
+        });
+
+        document.querySelectorAll('.schedule-waste-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSchedulePage();
+            });
+        });
+
+        document.getElementById('back-to-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            showHomePage();
+        });
+
+        // Admin Panel Toggle
+        document.getElementById('admin-toggle').addEventListener('click', function() {
+            if (isEditor) {
+                adminPanel.classList.add('open');
+                updateUserTable();
+                updatePickupTable();
+            }
+        });
+
+        document.getElementById('admin-close').addEventListener('click', function() {
+            adminPanel.classList.remove('open');
+        });
+
+        // Update user table in admin panel
+        function updateUserTable() {
+            userTableBody.innerHTML = '';
+            userCount.textContent = users.length;
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td>${user.joined}</td>
+                `;
+                userTableBody.appendChild(row);
+            });
+        }
+
+        // Update pickup table in admin panel
+        function updatePickupTable() {
+            pickupTableBody.innerHTML = '';
+            pickupCount.textContent = scheduledPickups.length;
+            
+            scheduledPickups.forEach(pickup => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${pickup.name}</td>
+                    <td>${pickup.phone}</td>
+                    <td>${pickup.address}</td>
+                    <td>${pickup.wasteType}</td>
+                    <td>${pickup.quantity} kg</td>
+                    <td>${pickup.scheduledDate}</td>
+                `;
+                pickupTableBody.appendChild(row);
+            });
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.getElementById('nav-menu').classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Waste type selection
+        function selectWasteType(type) {
+            document.querySelectorAll('.waste-type').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            document.querySelector(`.waste-type[onclick="selectWasteType('${type}')"]`).classList.add('selected');
+            document.getElementById(type).checked = true;
+        }
+
+        // Form submission
+        document.getElementById('waste-donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const wasteType = formData.get('waste-type');
+            const quantity = parseInt(formData.get('quantity'));
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const address = formData.get('address');
+            const email = formData.get('email');
+            
+            // Create pickup record
+            const pickup = {
+                id: Date.now(),
+                name,
+                phone,
+                address,
+                email,
+                wasteType,
+                quantity,
+                scheduledDate: new Date().toLocaleDateString()
+            };
+            
+            // Add to scheduled pickups
+            scheduledPickups.push(pickup);
+            localStorage.setItem('gelvisions_pickups', JSON.stringify(scheduledPickups));
+            
+            // Update counters based on donation
+            if (wasteType === 'plastic' || wasteType === 'both') {
+                updateCounter('plastic-counter', quantity);
+            }
+            
+            if (wasteType === 'stubble' || wasteType === 'both') {
+                updateCounter('stubble-counter', quantity);
+            }
+            
+            // Calculate bricks (rough estimate: 1kg waste ≈ 1 brick)
+            if (wasteType === 'both') {
+                updateCounter('bricks-counter', quantity * 2);
+            } else {
+                updateCounter('bricks-counter', quantity);
+            }
+            
+            // Show success message with driver call information
+            alert(`Thank you ${name}! Your ${quantity}kg ${wasteType} waste donation has been scheduled.\n\nOur driver will call you at ${phone} within 24 hours to confirm pickup for the next collection drive (twice weekly).\n\nThank you for helping us change the world BRICK by BRICK!`);
+            
+            // Reset form
+            this.reset();
+            document.querySelectorAll('.waste-type').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Return to home page
+            showHomePage();
+        });
+
+        // Counter animation
+        function updateCounter(counterId, amount) {
+            const counter = document.getElementById(counterId);
+            const current = parseInt(counter.textContent.replace(/,/g, ''));
+            const target = current + amount;
+            
+            let currentValue = current;
+            const increment = Math.ceil((target - current) / 50);
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= target) {
+                    currentValue = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = currentValue.toLocaleString();
+            }, 30);
+        }
+                // Initialize counters from localStorage
+        function initializeCounters() {
+            // Get stored counter values or set defaults
+            let plasticCount = parseInt(localStorage.getItem('gelvisions_plasticCount')) || 15247;
+            let stubbleCount = parseInt(localStorage.getItem('gelvisions_stubbleCount')) || 8932;
+            let bricksCount = parseInt(localStorage.getItem('gelvisions_bricksCount')) || 12385;
+            
+            // Update the counter displays
+            document.getElementById('plastic-counter').textContent = plasticCount.toLocaleString();
+            document.getElementById('stubble-counter').textContent = stubbleCount.toLocaleString();
+            document.getElementById('bricks-counter').textContent = bricksCount.toLocaleString();
+        }
+
+        // Update counter values in localStorage
+        function updateCounter(counterId, amount) {
+            const counter = document.getElementById(counterId);
+            const current = parseInt(counter.textContent.replace(/,/g, ''));
+            const target = current + amount;
+            
+            // Store the new value in localStorage
+            if (counterId === 'plastic-counter') {
+                localStorage.setItem('gelvisions_plasticCount', target);
+            } else if (counterId === 'stubble-counter') {
+                localStorage.setItem('gelvisions_stubbleCount', target);
+            } else if (counterId === 'bricks-counter') {
+                localStorage.setItem('gelvisions_bricksCount', target);
+            }
+            
+            let currentValue = current;
+            const increment = Math.ceil((target - current) / 50);
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= target) {
+                    currentValue = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = currentValue.toLocaleString();
+            }, 30);
+        }
+
+        // Form validation for phone number
+        document.getElementById('phone').addEventListener('input', function(e) {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Enhanced waste type selection
+        function selectWasteType(type) {
+            document.querySelectorAll('.waste-type').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            const selectedElement = document.querySelector(`.waste-type[onclick="selectWasteType('${type}')"]`);
+            if (selectedElement) {
+                selectedElement.classList.add('selected');
+                document.getElementById(type).checked = true;
+            }
+        }
+
+        // Add textarea element to the form (missing in HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            const notesGroup = document.querySelector('#notes').parentElement;
+            const textarea = document.createElement('textarea');
+            textarea.id = 'notes';
+            textarea.name = 'notes';
+            textarea.placeholder = 'Any special instructions, types of plastic, or details about your waste donation';
+            textarea.style.width = '100%';
+            textarea.style.padding = '14px';
+            textarea.style.border = '2px solid #e1e5e9';
+            textarea.style.borderRadius = '6px';
+            textarea.style.fontSize = '1rem';
+            textarea.style.fontFamily = 'inherit';
+            textarea.style.resize = 'vertical';
+            textarea.style.minHeight = '100px';
+            
+            const existingNotes = document.getElementById('notes');
+            if (existingNotes && existingNotes.tagName === 'INPUT') {
+                existingNotes.replaceWith(textarea);
+            }
+        });
+
+        // Auto-fill form with demo data for testing
+        function fillDemoData() {
+            document.getElementById('name').value = 'Demo User';
+            document.getElementById('email').value = 'demo@gelvisions.org';
+            document.getElementById('phone').value = '5551234567';
+            document.getElementById('address').value = '123 Green Street, Eco City';
+            document.getElementById('quantity').value = '15';
+            selectWasteType('both');
+            document.getElementById('notes').value = 'Demo donation - mixed plastic containers and rice stubble';
+        }
+
+        // Add demo button to form for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('waste-donation-form');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            const demoButton = document.createElement('button');
+            demoButton.type = 'button';
+            demoButton.textContent = 'Fill Demo Data';
+            demoButton.className = 'btn';
+            demoButton.style.marginRight = '10px';
+            demoButton.style.marginBottom = '10px';
+            demoButton.addEventListener('click', fillDemoData);
+            
+            submitButton.parentNode.insertBefore(demoButton, submitButton);
+        });
+
+        // Close admin panel when clicking outside
+        document.addEventListener('click', function(e) {
+            if (adminPanel.classList.contains('open') && 
+                !adminPanel.contains(e.target) && 
+                e.target.id !== 'admin-toggle') {
+                adminPanel.classList.remove('open');
+            }
+        });
+
+        // Prevent admin panel close when clicking inside
+        adminPanel.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Add logout functionality
+        function addLogoutButton() {
+            const navMenu = document.getElementById('nav-menu');
+            const logoutItem = document.createElement('li');
+            logoutItem.innerHTML = '<a href="#" id="logout-btn">Logout</a>';
+            navMenu.appendChild(logoutItem);
+            
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentUser = null;
+                isEditor = false;
+                localStorage.removeItem('gelvisions_autoSignIn');
+                localStorage.removeItem('gelvisions_currentUser');
+                alert('You have been logged out.');
+                location.reload();
+            });
+        }
+
+        // Initialize logout button when user is authenticated
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user was previously logged in with auto-signin
+            const autoSignIn = localStorage.getItem('gelvisions_autoSignIn');
+            const savedUser = localStorage.getItem('gelvisions_currentUser');
+            
+            if (autoSignIn === 'true' && savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    if (currentUser.email === 'editor@gelvisions.org') {
+                        isEditor = true;
+                        document.getElementById('admin-toggle').style.display = 'block';
+                    }
+                    showMainContent();
+                } catch (e) {
+                    console.error('Error loading saved user:', e);
+                }
+            }
+            
+            // Add logout button if user is logged in
+            if (currentUser) {
+                addLogoutButton();
+            }
+        });
+
+        // Save auto-signin preference
+        document.getElementById('signin-form').addEventListener('submit', function() {
+            const autoSignIn = document.getElementById('auto-signin').checked;
+            localStorage.setItem('gelvisions_autoSignIn', autoSignIn);
+            if (autoSignIn && currentUser) {
+                localStorage.setItem('gelvisions_currentUser', JSON.stringify(currentUser));
+            }
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function() {
+            const autoSignIn = document.getElementById('auto-signup').checked;
+            localStorage.setItem('gelvisions_autoSignIn', autoSignIn);
+            if (autoSignIn && currentUser) {
+                localStorage.setItem('gelvisions_currentUser', JSON.stringify(currentUser));
+            }
+        });
+
+        // Add animation to founder cards on scroll
+        function animateOnScroll() {
+            const founderCards = document.querySelectorAll('.founder-card');
+            const problemCards = document.querySelectorAll('.problem-card');
+            const steps = document.querySelectorAll('.step');
+            const donateOptions = document.querySelectorAll('.donate-option');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Set initial state for animations
+            [...founderCards, ...problemCards, ...steps, ...donateOptions].forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Initialize animations when main content is shown
+        const originalShowMainContent = showMainContent;
+        showMainContent = function() {
+            originalShowMainContent();
+            setTimeout(animateOnScroll, 100);
+        };
+
+        console.log('GEL Visions website initialized successfully!');
+    </script>
+</body>
+</html>
